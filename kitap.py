@@ -3,7 +3,7 @@ import pandas as pd
 import streamlit as st
 
 # CSV dosyasını oku
-df = pd.read_csv('/Users/huseyincanocal/Desktop/Software/books.csv')
+df = pd.read_csv('https://raw.githubusercontent.com/scostap/goodreads_bbe_dataset/refs/heads/main/Best_Books_Ever_dataset/books_1.Best_Books_Ever.csv')
 
 # Gereksiz verileri veri setinden çıkar
 df = df.drop(['bookId', 'characters', 'firstPublishDate', 'awards', 
