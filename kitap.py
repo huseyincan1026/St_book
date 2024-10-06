@@ -1,4 +1,3 @@
-
 import pandas as pd 
 import streamlit as st
 
@@ -28,12 +27,16 @@ def link_bul():
         
         if not selected_book.empty:  # Seçilen kitap var mı?
             # Kitap bilgilerini göster
-            st.image(selected_book.coverImg.iloc[0], width=300)
-            st.header(f'Kitap Ismi: {selected_book.title.iloc[0]}')   
-            st.header(f'Yazarı: {selected_book.author.iloc[0]}')   
-            st.markdown(selected_book.description.iloc[0])  
-            st.markdown(f"<h3 style='color: red; font-size: 23px;'>${selected_book.price.iloc[0]}</h3>",
-                        unsafe_allow_html=True)
+            st.markdown(
+                f"<div style='text-align: center;'>"
+                f"<img src='{selected_book.coverImg.iloc[0]}' style='width: 300px;'>"
+                f"<h3 style='text-align: center;'>{selected_book.title.iloc[0]}</h3>"
+                f"<h4 style='text-align: center;'>Yazarı: {selected_book.author.iloc[0]}</h4>"
+                f"<p style='text-align: justify;'>{selected_book.description.iloc[0]}</p>"
+                f"<h3 style='color: red; font-size: 23px;'>${selected_book.price.iloc[0]}</h3>"
+                f"</div>", 
+                unsafe_allow_html=True
+            )
         else:
             st.write("Bu kitap bulunamadı.")
             
@@ -49,21 +52,9 @@ def yaz_kitap():
                 st.markdown(
                     f"<div style='text-align: center;'>"
                     f"<img src='{selected_books.coverImg.iloc[i]}' style='width: 300px;'>"
+                    f"<h3 style='text-align: center;'>{selected_books.title.iloc[i]}</h3>"
+                    f"<p style='text-align: justify;'>{selected_books.description.iloc[i]}</p>"
                     f"</div>", 
-                    unsafe_allow_html=True
-                )
-                
-                # Kitap başlığını ortalıyoruz
-                st.markdown(
-                    f"<h3 style='text-align: center;'>{selected_books.title.iloc[i]}</h3>",
-                    unsafe_allow_html=True
-                )
-
-                # Açıklamayı ortalıyoruz
-                st.markdown(
-                    f"<p style='text-align: justify; text-align-last: center;'>"
-                    f"{selected_books.description.iloc[i]}"
-                    f"</p>", 
                     unsafe_allow_html=True
                 )
         else:
